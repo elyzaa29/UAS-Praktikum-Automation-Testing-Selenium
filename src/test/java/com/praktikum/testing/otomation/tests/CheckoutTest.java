@@ -5,6 +5,8 @@ import com.praktikum.testing.otomation.pages.CheckoutModal;
 import com.praktikum.testing.otomation.pages.ProductPage;
 import com.praktikum.testing.otomation.utils.ScreenshotUtil;
 import com.praktikum.testing.otomation.utils.TestDataGenerator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -164,4 +166,36 @@ public class CheckoutTest extends BaseTest {
 
         System.out.println("✓ Invalid data test completed");
     }
+
+    @Test(priority = 5, enabled = true)
+    public void testCheckoutWithNonNumericCreditCard() throws InterruptedException {
+        System.out.println("\n=== TEST: Credit Card Numeric Validation ===");
+
+        // Open Place Order modal
+        driver.findElement(By.xpath("//button[text()='Place Order']")).click();
+        Thread.sleep(2000);
+
+        WebElement creditCardField = driver.findElement(By.id("card"));
+
+        // Test data non-numeric
+        String invalidCardNumber = "abcd1234!@#";
+
+        creditCardField.clear();
+        creditCardField.sendKeys(invalidCardNumber);
+
+        // Click Purchase
+        driver.findElement(By.xpath("//button[text()='Purchase']")).click();
+        Thread.sleep(2000);
+
+        // Demoblaze behavior: order STILL SUCCESS (BUG)
+        WebElement successPopup = driver.findElement(By.className("sweet-alert"));
+
+        if (successPopup.isDisplayed()) {
+            System.out.println(" BUG FOUND: Non-numeric credit card accepted!");
+            Assert.fail("Credit Card field accepts non-numeric values");
+        } else {
+            System.out.println("✓ Credit Card numeric validation works");
+        }
+    }
+
 }
