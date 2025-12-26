@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Demoblaze Complete Automation Test Suite" parallel="false" verbose="2">
+
+    <!-- ===================================================== -->
+    <!--                   DEMO TEST FILES                     -->
+    <!--           (Untuk pembelajaran Selenium)               -->
+    <!-- ===================================================== -->
+
+    <test name="01 - Demo: Setup Verification">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.SetupVerificationTest"/>
+        </classes>
+    </test>
+
+    <!--
+    Uncomment ketika demo files sudah dibuat:
+
+    <test name="02 - Demo: Locator Strategies">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.LocatorStrategiesDemo"/>
+        </classes>
+    </test>
+
+    <test name="03 - Demo: Form Interaction">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.FormInteractionDemo"/>
+        </classes>
+    </test>
+
+    <test name="04 - Demo: Navigation & Windows">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.NavigationAndWindowDemo"/>
+        </classes>
+    </test>
+
+    <test name="05 - Demo: JavaScript Execution">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.JavaScriptExecutorDemo"/>
+        </classes>
+    </test>
+
+    <test name="06 - Demo: Wait Strategies">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.WaitStrategiesDemo"/>
+        </classes>
+    </test>
+
+    <test name="07 - Demo: Alert Handling">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.AlertHandlingDemo"/>
+        </classes>
+    </test>
+
+    <test name="08 - Demo: POM Implementation">
+        <classes>
+            <class name="com.praktikum.testing.otomation.demo.LoginTestWithPOM"/>
+        </classes>
+    </test>
+    -->
+
+    <!-- ===================================================== -->
+    <!--               ACTUAL APPLICATION TESTS                -->
+    <!--         (Test cases untuk aplikasi Demoblaze)         -->
+    <!-- ===================================================== -->
+
+    <!-- Test Group 1: User Authentication -->
+    <test name="09 - Application: User Authentication">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.praktikum.testing.otomation.tests.UserLoginTest"/>
+            <class name="com.praktikum.testing.otomation.tests.UserRegistrationTest"/>
+        </classes>
+    </test>
+
+    <!-- Test Group 2: Product Browsing -->
+    <test name="10 - Application: Product Browsing">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.praktikum.testing.otomation.tests.ProductTest"/>
+        </classes>
+    </test>
+
+    <!-- Test Group 3: Shopping Cart -->
+    <test name="11 - Application: Shopping Cart">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.praktikum.testing.otomation.tests.ShoppingCartTest"/>
+        </classes>
+    </test>
+
+    <!-- Test Group 4: Checkout Process -->
+    <test name="12 - Application: Checkout Process">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.praktikum.testing.otomation.tests.CheckoutTest"/>
+        </classes>
+    </test>
+
+    <!-- Test Group 5: End-to-End Flow -->
+    <test name="13 - Application: End-to-End Flow">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.praktikum.testing.otomation.tests.EndToEndTest"/>
+        </classes>
+    </test>
+
+    <!-- ===================================================== -->
+    <!--              COMPREHENSIVE TEST RUNS                  -->
+    <!-- ===================================================== -->
+
+    <!-- Run semua application tests sekaligus -->
+    <test name="14 - Complete: All Application Tests">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <!-- User Authentication -->
+            <class name="com.praktikum.testing.otomation.tests.UserLoginTest"/>
+            <class name="com.praktikum.testing.otomation.tests.UserRegistrationTest"/>
+
+            <!-- Product & Shopping -->
+            <class name="com.praktikum.testing.otomation.tests.ProductTest"/>
+            <class name="com.praktikum.testing.otomation.tests.ShoppingCartTest"/>
+
+            <!-- Checkout & E2E -->
+            <class name="com.praktikum.testing.otomation.tests.CheckoutTest"/>
+            <class name="com.praktikum.testing.otomation.tests.EndToEndTest"/>
+        </classes>
+    </test>
+
+    <!-- Run SEMUA tests termasuk demo -->
+    <test name="15 - Complete: All Tests Including Demo">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <!-- Demo Tests -->
+            <class name="com.praktikum.testing.otomation.demo.SetupVerificationTest"/>
+
+            <!-- Application Tests -->
+            <class name="com.praktikum.testing.otomation.tests.UserLoginTest"/>
+            <class name="com.praktikum.testing.otomation.tests.UserRegistrationTest"/>
+            <class name="com.praktikum.testing.otomation.tests.ProductTest"/>
+            <class name="com.praktikum.testing.otomation.tests.ShoppingCartTest"/>
+            <class name="com.praktikum.testing.otomation.tests.CheckoutTest"/>
+            <class name="com.praktikum.testing.otomation.tests.EndToEndTest"/>
+        </classes>
+    </test>
+</suite>
